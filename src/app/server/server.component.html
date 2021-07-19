@@ -1,0 +1,18 @@
+<h1>here in this your component !!</h1>
+<app-servers></app-servers>
+<input type="text" class="form-control" (input) = "onUpdateServerName($event)">
+<p> {{ serverName }} </p>
+<button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "oncreateserver()" >Add server</button>
+<p> {{ serverCreationStatus }} </p>
+<p>{{ 'Server' }} with ID {{ id }} is {{ status }} </p>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class=".col-x">
+            <label>UserName</label>
+            <input class="form-control" type="text">
+        </div>
+    </div>
+</div>
