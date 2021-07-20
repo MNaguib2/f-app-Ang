@@ -1,1 +1,11 @@
-<p>servers works!</p>
+<p 
+[ngStyle]="{backgroundColor: getColor()}"
+[ngClass] = "{online: status === 'online'}" >{{ 'Server' }} with ID {{ id }} is {{ status }} </p>
+
+<button (click) = "onToggelDetials()" class="btn btn-primary"> Show Password </button>
+<p *ngIf="showpassword">Secret Password = tuna</p>
+<div *ngFor="let logitem of log; index as i"
+    [ngStyle] = "{backgroundColor: i % 2 !== 0 ? 'blue' : 'transparent'}"
+    [ngClass] = "{ 'white-text': i % 2 !== 0 }">
+    {{ logitem }}
+</div>

@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
         h1 {
           color: blue;
         }
+        .online {
+          color: white;
+        }
     `]
 })
 export class ServerComponent {
@@ -19,8 +22,11 @@ export class ServerComponent {
     serverCreationStatus = 'No server was created!';
     click = false;
     serverName ='';
+    username = '';
+    servers = ['testserver', 'testserver 2'];
 
     constructor(){
+      this.status = Math.random() > .5 ? 'online' : 'offline';
       setTimeout(() => {
         this.allowNewServer = true;
       }, 2000);
@@ -28,6 +34,7 @@ export class ServerComponent {
    oncreateserver (){
       if(!this.click){
     this.serverCreationStatus = 'Service was create ' + this.serverName;
+    this.servers.push(this.serverName);
     this.click = true;
       }else {
         this.serverCreationStatus = 'No server was created!';
@@ -36,6 +43,10 @@ export class ServerComponent {
     }
     onUpdateServerName(event: Event) {
       this.serverName = (<HTMLInputElement>event.target).value;
+    }
+
+    getColor() {
+      return this.status === 'online' ? 'green' :  'red';
     }
   }
   

@@ -1,18 +1,33 @@
+<!--
 <h1>here in this your component !!</h1>
 <app-servers></app-servers>
 <input type="text" class="form-control" (input) = "onUpdateServerName($event)">
 <p> {{ serverName }} </p>
 <button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "oncreateserver()" >Add server</button>
-<p> {{ serverCreationStatus }} </p>
+<p *ngIf = "click; else noServer"> {{ serverCreationStatus }} </p>
+<ng-template #noServer>
+    <p>No exsit server this is ng template</p>
+</ng-template>
 <p>{{ 'Server' }} with ID {{ id }} is {{ status }} </p>
 
 <hr>
 
 <div class="container">
     <div class="row">
-        <div class=".col-x">
+        <div class=".col-xs-12">
             <label>UserName</label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" [(ngModel)] ="username"> 
+            <p>{{ username }}</p>
+            <button class="btn btn-primary" (click)= "username = ''" [disabled] ="username === ''">Reset User</button>
         </div>
     </div>
 </div>
+-->
+<input type="text" class="form-control" (input) = "onUpdateServerName($event)">
+<button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "oncreateserver()" >Add server</button>
+<app-servers *ngFor="let server of servers"></app-servers>
+<p 
+[ngStyle]="{backgroundColor: getColor()}"
+[ngClass] = "{online: status === 'online'}" >{{ 'Server' }} with ID {{ id }} is {{ status }} 
+</p>
+
